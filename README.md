@@ -20,5 +20,8 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 ## Seting database dan migration
 -php artisan migrate
 
+## Configurasi register
+
+
 
 
