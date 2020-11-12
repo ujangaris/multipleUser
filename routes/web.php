@@ -13,10 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['web']], function () {
+    Auth::routes();
+
 });
 
-Auth::routes();
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', function(){
+        if(Auth()->user()->admin ==1){
+            return view('user.home_user');
+        }
+        return view('user.home_user');
+    });
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('admin',['middleware' => ['web', 'auth', 'admin'], function () {
+    return view('admin.home_admin');
+}]);
+

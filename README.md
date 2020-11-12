@@ -23,5 +23,9 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 ## Configurasi register
 
 
+## Middleware IsAdmin
+php artisan make:middleware IsAdmin
+
+
 
 
